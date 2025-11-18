@@ -108,7 +108,7 @@ async fn check(client: Arc<reqwest::Client>, pull_request: u64, token: Option<&s
 
 		for (i, result) in results {
 			let has_pull_request = result?;
-			writeln!(output, "{}: {}", tracked_branches[i], if has_pull_request { "✅" } else { "🚫" })?;
+			writeln!(output, "{} {}", if has_pull_request { "✅" } else { "🚫" }, tracked_branches[i])?;
 		}
 	} else {
 		let created_at_ago = format_seconds_to_time_ago(
